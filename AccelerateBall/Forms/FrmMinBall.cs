@@ -169,6 +169,24 @@ namespace AccelerateBall.Forms
         {
             mouse.Stop();
         }
+
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e) => Program.Exit();
+
+
+        private void HideToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sender is ToolStripMenuItem item)
+                if (Visible)
+                {
+                    item.Text = "显示";
+                    Hide();
+                }
+                else
+                {
+                    item.Text = "隐藏";
+                    Show();
+                }
+        }
     }
 }
 

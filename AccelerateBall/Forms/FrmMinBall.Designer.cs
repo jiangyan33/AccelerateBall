@@ -39,7 +39,12 @@ namespace AccelerateBall.Forms
             this.labelUp = new Infragistics.Win.Misc.UltraLabel();
             this.labelDown = new Infragistics.Win.Misc.UltraLabel();
             this.ballControl = new AccelerateBall.CustomControl.BallControl();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.HideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer
@@ -78,16 +83,46 @@ namespace AccelerateBall.Forms
             this.ballControl.Name = "ballControl";
             this.ballControl.Size = new System.Drawing.Size(133, 59);
             this.ballControl.TabIndex = 0;
-            this.ballControl.Text = "ballControl1";
+            this.ballControl.Text = "ballControl";
             this.ballControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseDown);
             this.ballControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseMove);
             this.ballControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseUp);
             // 
-            // notifyIcon1
+            // notifyIcon
             // 
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "加速球";
-            this.notifyIcon1.Visible = true;
+            this.notifyIcon.ContextMenuStrip = this.contextMenuStrip;
+            this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
+            this.notifyIcon.Text = "加速球";
+            this.notifyIcon.Visible = true;
+            // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HideToolStripMenuItem,
+            this.toolStripSeparator,
+            this.ExitToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(181, 76);
+            // 
+            // HideToolStripMenuItem
+            // 
+            this.HideToolStripMenuItem.Name = "HideToolStripMenuItem";
+            this.HideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.HideToolStripMenuItem.Text = "隐藏";
+            this.HideToolStripMenuItem.Click += new System.EventHandler(this.HideToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator
+            // 
+            this.toolStripSeparator.Name = "toolStripSeparator";
+            this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
+            // 
+            // ExitToolStripMenuItem
+            // 
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Text = "退出";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // FrmMinBall
             // 
@@ -106,6 +141,7 @@ namespace AccelerateBall.Forms
             this.TransparencyKey = System.Drawing.Color.White;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -116,6 +152,10 @@ namespace AccelerateBall.Forms
         private System.Windows.Forms.Timer timer;
         private Infragistics.Win.Misc.UltraLabel labelUp;
         private Infragistics.Win.Misc.UltraLabel labelDown;
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem HideToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
     }
 }

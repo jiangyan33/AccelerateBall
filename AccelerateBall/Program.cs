@@ -22,7 +22,7 @@ namespace AccelerateBall
             //处理非线程异常
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             NLogHelper.Info("程序启动");
-            Application.Run(new FrmMinBall());
+            Application.Run(new Forms.FrmMinBall());
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

@@ -1,7 +1,7 @@
 ﻿
 using AccelerateBall.CustomControl;
 
-namespace AccelerateBall
+namespace AccelerateBall.Forms
 {
     partial class FrmMinBall
     {
@@ -34,10 +34,12 @@ namespace AccelerateBall
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMinBall));
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.labelUp = new Infragistics.Win.Misc.UltraLabel();
             this.labelDown = new Infragistics.Win.Misc.UltraLabel();
             this.ballControl = new AccelerateBall.CustomControl.BallControl();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // timer
@@ -81,6 +83,12 @@ namespace AccelerateBall
             this.ballControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseMove);
             this.ballControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseUp);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "加速球";
+            this.notifyIcon1.Visible = true;
+            // 
             // FrmMinBall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -108,5 +116,6 @@ namespace AccelerateBall
         private System.Windows.Forms.Timer timer;
         private Infragistics.Win.Misc.UltraLabel labelUp;
         private Infragistics.Win.Misc.UltraLabel labelDown;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

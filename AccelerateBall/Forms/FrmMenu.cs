@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace AccelerateBall
+namespace AccelerateBall.Forms
 {
     public partial class FrmMenu : Form
     {

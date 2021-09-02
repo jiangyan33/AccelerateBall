@@ -1,5 +1,5 @@
 ﻿
-namespace AccelerateBall
+namespace AccelerateBall.Forms
 {
     partial class FrmMenu
     {

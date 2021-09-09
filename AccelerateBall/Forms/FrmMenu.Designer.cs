@@ -32,12 +32,14 @@ namespace AccelerateBall.Forms
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.panelFill = new Infragistics.Win.Misc.UltraPanel();
             this.panelContent = new Infragistics.Win.Misc.UltraPanel();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panelTop = new Infragistics.Win.Misc.UltraPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxStartOpen = new System.Windows.Forms.PictureBox();
             this.pictureBoxAllCheck = new System.Windows.Forms.PictureBox();
             this.panelFill.ClientArea.SuspendLayout();
             this.panelFill.SuspendLayout();
+            this.panelContent.ClientArea.SuspendLayout();
             this.panelContent.SuspendLayout();
             this.panelTop.ClientArea.SuspendLayout();
             this.panelTop.SuspendLayout();
@@ -65,11 +67,24 @@ namespace AccelerateBall.Forms
             // 
             // panelContent
             // 
+            // 
+            // panelContent.ClientArea
+            // 
+            this.panelContent.ClientArea.Controls.Add(this.flowLayoutPanel);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(0, 78);
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(169, 160);
             this.panelContent.TabIndex = 3;
+            // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(169, 160);
+            this.flowLayoutPanel.TabIndex = 0;
             // 
             // panelTop
             // 
@@ -139,6 +154,7 @@ namespace AccelerateBall.Forms
             this.MouseLeave += new System.EventHandler(this.FrmMenu_MouseLeave);
             this.panelFill.ClientArea.ResumeLayout(false);
             this.panelFill.ResumeLayout(false);
+            this.panelContent.ClientArea.ResumeLayout(false);
             this.panelContent.ResumeLayout(false);
             this.panelTop.ClientArea.ResumeLayout(false);
             this.panelTop.ResumeLayout(false);
@@ -156,5 +172,6 @@ namespace AccelerateBall.Forms
         private System.Windows.Forms.PictureBox pictureBoxStartOpen;
         private System.Windows.Forms.PictureBox pictureBoxAllCheck;
         private Infragistics.Win.Misc.UltraPanel panelContent;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
     }
 }

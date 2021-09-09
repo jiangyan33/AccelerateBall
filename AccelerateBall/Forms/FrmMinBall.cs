@@ -121,14 +121,19 @@ namespace AccelerateBall.Forms
             }
         }
 
-        private void timer_Tick(object sender, EventArgs e)
+        private async void Timer_Tick(object sender, EventArgs e)
         {
-            Test();
+            var res = await HttpClientHelper.Get(AppConfig.CodeList);
+            var newRate = res[0].Percentage;
+            PaintMiniBallControl(newRate);
+            if (frmMenu != null)
+            {
+                frmMenu.LoadData(res);
+            }
         }
 
-        public void Test()
+        public void PaintMiniBallControl(string usedMemoryRate)
         {
-            var usedMemoryRate = "-1";
 
             var g = ballControl.CreateGraphics();
             g.SmoothingMode = SmoothingMode.AntiAlias;

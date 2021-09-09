@@ -38,12 +38,12 @@ namespace AccelerateBall.Forms
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.labelUp = new Infragistics.Win.Misc.UltraLabel();
             this.labelDown = new Infragistics.Win.Misc.UltraLabel();
-            this.ballControl = new AccelerateBall.CustomControl.BallControl();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.HideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ballControl = new AccelerateBall.CustomControl.BallControl();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,9 +58,10 @@ namespace AccelerateBall.Forms
             appearance1.TextHAlignAsString = "Left";
             appearance1.TextVAlignAsString = "Middle";
             this.labelUp.Appearance = appearance1;
-            this.labelUp.Location = new System.Drawing.Point(59, 3);
+            this.labelUp.Location = new System.Drawing.Point(58, 3);
             this.labelUp.Name = "labelUp";
-            this.labelUp.Size = new System.Drawing.Size(54, 29);
+            this.labelUp.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelUp.Size = new System.Drawing.Size(57, 28);
             this.labelUp.TabIndex = 1;
             this.labelUp.Text = " 100 K/s";
             // 
@@ -70,23 +71,12 @@ namespace AccelerateBall.Forms
             appearance2.TextHAlignAsString = "Left";
             appearance2.TextVAlignAsString = "Middle";
             this.labelDown.Appearance = appearance2;
-            this.labelDown.Location = new System.Drawing.Point(59, 30);
+            this.labelDown.Location = new System.Drawing.Point(58, 30);
             this.labelDown.Name = "labelDown";
-            this.labelDown.Size = new System.Drawing.Size(54, 29);
+            this.labelDown.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.labelDown.Size = new System.Drawing.Size(57, 28);
             this.labelDown.TabIndex = 2;
             this.labelDown.Text = " 100 K/s";
-            // 
-            // ballControl
-            // 
-            this.ballControl.BackColor = System.Drawing.Color.White;
-            this.ballControl.Location = new System.Drawing.Point(0, 0);
-            this.ballControl.Name = "ballControl";
-            this.ballControl.Size = new System.Drawing.Size(133, 59);
-            this.ballControl.TabIndex = 0;
-            this.ballControl.Text = "ballControl";
-            this.ballControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseDown);
-            this.ballControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseMove);
-            this.ballControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseUp);
             // 
             // notifyIcon
             // 
@@ -103,26 +93,38 @@ namespace AccelerateBall.Forms
             this.toolStripSeparator,
             this.ExitToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(181, 76);
+            this.contextMenuStrip.Size = new System.Drawing.Size(101, 54);
             // 
             // HideToolStripMenuItem
             // 
             this.HideToolStripMenuItem.Name = "HideToolStripMenuItem";
-            this.HideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.HideToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.HideToolStripMenuItem.Text = "隐藏";
             this.HideToolStripMenuItem.Click += new System.EventHandler(this.HideToolStripMenuItem_Click);
             // 
             // toolStripSeparator
             // 
             this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator.Size = new System.Drawing.Size(97, 6);
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.ExitToolStripMenuItem.Text = "退出";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            // 
+            // ballControl
+            // 
+            this.ballControl.BackColor = System.Drawing.Color.White;
+            this.ballControl.Location = new System.Drawing.Point(0, 0);
+            this.ballControl.Name = "ballControl";
+            this.ballControl.Size = new System.Drawing.Size(133, 59);
+            this.ballControl.TabIndex = 0;
+            this.ballControl.Text = "ballControl";
+            this.ballControl.MouseDown += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseDown);
+            this.ballControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseMove);
+            this.ballControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseUp);
             // 
             // FrmMinBall
             // 
@@ -139,8 +141,8 @@ namespace AccelerateBall.Forms
             this.Text = "Form1";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.White;
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.Click += new System.EventHandler(this.Form1_Click);
+            this.Load += new System.EventHandler(this.FrmMinBall_Load);
+            this.Click += new System.EventHandler(this.FrmMinBall_Click);
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 

@@ -1,5 +1,6 @@
 ﻿using AccelerateBall.Utils;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -22,6 +23,7 @@ namespace AccelerateBall
             //处理非线程异常
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
             NLogHelper.Info("程序启动");
+
             Application.Run(new Forms.FrmMinBall());
         }
 
@@ -41,6 +43,7 @@ namespace AccelerateBall
         {
             NLogHelper.Info("程序退出");
             HttpClientHelper.Close();
+            NetWorkSpeedMonitor.GetInstance().StopMonitoring();
             Application.Exit();
         }
     }

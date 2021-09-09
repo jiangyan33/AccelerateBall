@@ -105,6 +105,8 @@
     <Compile Include="Utils\AppConfig.cs" />
     <Compile Include="Utils\HttpClientHelper.cs" />
     <Compile Include="Utils\MouseHook.cs" />
+    <Compile Include="Utils\NetWorkAdapter.cs" />
+    <Compile Include="Utils\NetWorkSpeedMonitor.cs" />
     <Compile Include="Utils\NLogHelper.cs" />
     <Compile Include="Utils\WinFormHelper.cs" />
     <EmbeddedResource Include="CustomControl\BallControl.resx">

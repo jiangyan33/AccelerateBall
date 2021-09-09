@@ -2,6 +2,8 @@
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AccelerateBall.Forms
@@ -58,9 +60,65 @@ namespace AccelerateBall.Forms
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FrmMinBall_Load(object sender, EventArgs e)
         {
             timer.Start();
+            var instance = NetWorkSpeedMonitor.GetInstance();
+            if (instance.Adapters.Count == 0)
+            {
+                NLogHelper.Error("没有检测到网卡信息");
+                return;
+            }
+            instance.StartMonitoring();
+            Task.Run(() => NetWorkMonitor(instance));
+        }
+
+        /// <summary>
+        /// 网路监控
+        /// </summary>
+        private void NetWorkMonitor(NetWorkSpeedMonitor instance)
+        {
+            while (instance.Adapters.Count > 0)
+            {
+                double downSpeed = 0, uploadSpeed = 0;
+                foreach (var item in instance.Adapters)
+                {
+                    downSpeed += item.DownloadSpeed;
+                    uploadSpeed += item.UploadSpeed;
+                }
+                labelUp.UpdateUI(() => labelUp.Text = FormatNetSpeed(uploadSpeed));
+                labelDown.UpdateUI(() => labelDown.Text = FormatNetSpeed(downSpeed));
+                Thread.Sleep(500);
+            }
+        }
+
+        /// <summary>
+        /// 只显示3位数字
+        /// </summary>
+        /// <param name="speed"></param>
+        /// <returns></returns>
+        private string FormatNetSpeed(double speed)
+        {
+            if (speed > 1024 * 10)
+            {
+                return $"{Math.Round(speed / 1024, 1)} M/s";
+            }
+            else if (speed > 1000)
+            {
+                return $"{Math.Round(speed / 1024, 2)} M/s";
+            }
+            else if (speed > 100)
+            {
+                return $"{Math.Round(speed)} K/s";
+            }
+            else if (speed > 10)
+            {
+                return $"{Math.Round(speed, 1)} K/s";
+            }
+            else
+            {
+                return $"{Math.Round(speed, 2)} K/s";
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)
@@ -165,7 +223,7 @@ namespace AccelerateBall.Forms
             return new Point(x, y);
         }
 
-        private void Form1_Click(object sender, EventArgs e)
+        private void FrmMinBall_Click(object sender, EventArgs e)
         {
             mouse.Stop();
         }

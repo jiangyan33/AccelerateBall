@@ -44,7 +44,7 @@ namespace AccelerateBall.Utils
             foreach (string name in category.GetInstanceNames())
             {
                 // 每一个计算机上都存在的网卡.
-                if (name == "MS TCP Loopback interface" || name == "Teredo Tunneling Pseudo")
+                if (name == "MS TCP Loopback interface" || name == "Teredo Tunneling Pseudo-Interface")
                     continue;
                 var downCounter = new PerformanceCounter(categoryName, "Bytes Received/sec", name);
                 var upCounter = new PerformanceCounter(categoryName, "Bytes Sent/sec", name);

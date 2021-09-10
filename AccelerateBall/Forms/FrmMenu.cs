@@ -104,9 +104,7 @@ namespace AccelerateBall.Forms
                             {
                                 label.ForeColor = Color.Red;
                             }
-                            Console.WriteLine(valueItem.Percentage);
                             panel.Controls[1].Text = valueItem.Percentage;
-
                         });
                     }
                 }

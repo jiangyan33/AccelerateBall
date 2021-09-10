@@ -12,6 +12,11 @@ namespace AccelerateBall.Forms
     {
 
         /// <summary>
+        /// 上一次的圆球占比
+        /// </summary>
+        private string oldRate;
+
+        /// <summary>
         /// 鼠标是否按下
         /// </summary>
         private bool isMouseDown;
@@ -125,7 +130,12 @@ namespace AccelerateBall.Forms
         {
             var res = await HttpClientHelper.Get(AppConfig.CodeList);
             var newRate = res[0].Percentage;
-            PaintMiniBallControl(newRate);
+
+            if (newRate != oldRate)
+            {
+                oldRate = newRate;
+                PaintMiniBallControl(newRate);
+            }
             if (frmMenu != null)
             {
                 frmMenu.LoadData(res);
@@ -134,9 +144,11 @@ namespace AccelerateBall.Forms
 
         public void PaintMiniBallControl(string usedMemoryRate)
         {
-
             var g = ballControl.CreateGraphics();
             g.SmoothingMode = SmoothingMode.AntiAlias;
+            // 覆盖之前填充的数据
+            var brush = new SolidBrush(Color.GreenYellow);
+            g.FillEllipse(brush, 4, 4, 52, 52);
 
             var color = Color.Black;
             if (usedMemoryRate.StartsWith("-"))
@@ -146,7 +158,7 @@ namespace AccelerateBall.Forms
             }
 
             var x = usedMemoryRate.Length > 1 ? 16 : 21;
-            var brush = new SolidBrush(color);
+            brush = new SolidBrush(color);
             g.DrawString(usedMemoryRate + "%", new Font("宋体", 14), brush, x, 21);
             g.Dispose();
         }
@@ -234,7 +246,6 @@ namespace AccelerateBall.Forms
         }
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e) => Program.Exit();
-
 
         private void HideToolStripMenuItem_Click(object sender, EventArgs e)
         {

@@ -138,6 +138,7 @@ namespace AccelerateBall.Forms
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FrmMinBall";
+            this.ShowInTaskbar = false;
             this.Text = "Form1";
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.White;

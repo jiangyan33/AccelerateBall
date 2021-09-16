@@ -26,7 +26,7 @@ namespace AccelerateBall.Utils
                 var now = double.Parse(tempList[4]);
                 var pre = double.Parse(tempList[3]);
                 var percentage = Math.Round(((now - pre) / pre) * 1000).ToString();
-                result.Add(new Dict(codeList[i], name, percentage));
+                result.Add(new Dict(codeList[i], name, now.ToString(), percentage));
             }
             return result;
         }

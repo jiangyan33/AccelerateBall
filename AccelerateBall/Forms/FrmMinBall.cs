@@ -1,4 +1,5 @@
-﻿using AccelerateBall.Utils;
+﻿using AccelerateBall.Model;
+using AccelerateBall.Utils;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -14,7 +15,7 @@ namespace AccelerateBall.Forms
         /// <summary>
         /// 上一次的圆球占比
         /// </summary>
-        private string oldRate;
+        private readonly Dict oldRateDict = new Dict();
 
         /// <summary>
         /// 鼠标是否按下
@@ -46,7 +47,14 @@ namespace AccelerateBall.Forms
         public FrmMinBall()
         {
             InitializeComponent();
-            frmMenu = new FrmMenu();
+
+            frmMenu = new FrmMenu
+            {
+                TopMost = AppConfig.TopMost,
+                Opacity = AppConfig.Opacity
+            };
+            TopMost = AppConfig.TopMost;
+            Opacity = AppConfig.Opacity;
             mouse.OnMouseClickEvent += Mouse_OnMouseClickEvent;
             mouse.Start();
         }
@@ -130,10 +138,10 @@ namespace AccelerateBall.Forms
         {
             var res = await HttpClientHelper.Get(AppConfig.CodeList);
             var newRate = res[0].Percentage;
-
-            if (newRate != oldRate)
+            if (string.IsNullOrEmpty(oldRateDict.Percentage) || newRate != oldRateDict.Percentage || oldRateDict.Id > 2)
             {
-                oldRate = newRate;
+                oldRateDict.Percentage = newRate;
+                oldRateDict.Id++;
                 PaintMiniBallControl(newRate);
             }
             if (frmMenu != null)

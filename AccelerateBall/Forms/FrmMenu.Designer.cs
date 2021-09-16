@@ -32,11 +32,11 @@ namespace AccelerateBall.Forms
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.panelFill = new Infragistics.Win.Misc.UltraPanel();
             this.panelContent = new Infragistics.Win.Misc.UltraPanel();
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panelTop = new Infragistics.Win.Misc.UltraPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxStartOpen = new System.Windows.Forms.PictureBox();
             this.pictureBoxAllCheck = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.panelFill.ClientArea.SuspendLayout();
             this.panelFill.SuspendLayout();
             this.panelContent.ClientArea.SuspendLayout();
@@ -77,15 +77,6 @@ namespace AccelerateBall.Forms
             this.panelContent.Size = new System.Drawing.Size(169, 160);
             this.panelContent.TabIndex = 3;
             // 
-            // flowLayoutPanel
-            // 
-            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-            this.flowLayoutPanel.Size = new System.Drawing.Size(169, 160);
-            this.flowLayoutPanel.TabIndex = 0;
-            // 
             // panelTop
             // 
             // 
@@ -120,7 +111,7 @@ namespace AccelerateBall.Forms
             this.pictureBoxStartOpen.Location = new System.Drawing.Point(84, 0);
             this.pictureBoxStartOpen.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxStartOpen.Name = "pictureBoxStartOpen";
-            this.pictureBoxStartOpen.Size = new System.Drawing.Size(85, 78);
+            this.pictureBoxStartOpen.Size = new System.Drawing.Size(84, 78);
             this.pictureBoxStartOpen.TabIndex = 1;
             this.pictureBoxStartOpen.TabStop = false;
             this.pictureBoxStartOpen.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
@@ -139,6 +130,15 @@ namespace AccelerateBall.Forms
             this.pictureBoxAllCheck.TabStop = false;
             this.pictureBoxAllCheck.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
             this.pictureBoxAllCheck.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
+            // 
+            // flowLayoutPanel
+            // 
+            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel.Name = "flowLayoutPanel";
+            this.flowLayoutPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
+            this.flowLayoutPanel.Size = new System.Drawing.Size(169, 160);
+            this.flowLayoutPanel.TabIndex = 0;
             // 
             // FrmMenu
             // 

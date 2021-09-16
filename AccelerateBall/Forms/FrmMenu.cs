@@ -1,6 +1,5 @@
 ﻿using AccelerateBall.Model;
 using AccelerateBall.Utils;
-using Infragistics.Win.Misc;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -55,43 +54,40 @@ namespace AccelerateBall.Forms
             var codeList = AppConfig.CodeList;
             for (var i = 1; i < codeList.Count; i++)
             {
-                var panel = new UltraPanel
+                var panel = new Panel
                 {
-                    Tag = codeList[i],
+                    Name = codeList[i],
                     Dock = DockStyle.Top,
-                    Height = 30,
+                    Height = 20,
+                    Margin = new Padding(5, 5, 5, 5)
                 };
 
-                var labelName = new UltraLabel
+                var labelName = new Label
                 {
                     Dock = DockStyle.Left,
                     Font = font,
-                    AutoSize = true
+                    AutoSize = true,
+                    TextAlign = ContentAlignment.MiddleLeft
                 };
-                labelName.Appearance.TextHAlign = Infragistics.Win.HAlign.Left;
-                labelName.Appearance.TextVAlign = Infragistics.Win.VAlign.Middle;
 
-                var labelValue = new UltraLabel
+                var labelValue = new Label
                 {
                     Dock = DockStyle.Fill,
                     Font = font,
+                    TextAlign = ContentAlignment.MiddleRight
                 };
-                labelValue.Appearance.TextHAlign = Infragistics.Win.HAlign.Right;
-                labelValue.Appearance.TextVAlign = Infragistics.Win.VAlign.Middle;
 
-                var labelRate = new UltraLabel
+                var labelRate = new Label
                 {
                     Dock = DockStyle.Right,
                     Font = font,
                     Width = 42,
-                    Margin = new Padding(0, 0, 0, 2)
+                    TextAlign = ContentAlignment.MiddleRight
                 };
-                labelRate.Appearance.TextHAlign = Infragistics.Win.HAlign.Right;
-                labelRate.Appearance.TextVAlign = Infragistics.Win.VAlign.Middle;
 
-                panel.ClientArea.Controls.Add(labelName);
-                panel.ClientArea.Controls.Add(labelValue);
-                panel.ClientArea.Controls.Add(labelRate);
+                panel.Controls.Add(labelName);
+                panel.Controls.Add(labelValue);
+                panel.Controls.Add(labelRate);
                 panelContent.ClientArea.Controls.Add(panel);
             }
         }
@@ -100,29 +96,32 @@ namespace AccelerateBall.Forms
         {
             foreach (var control in panelContent.ClientArea.Controls)
             {
-                if (control is UltraPanel panel)
+                if (control is Panel panel)
                 {
-                    var valueItem = list.Find(it => it.Code == panel.Tag.ToString());
-                    if (valueItem != null)
+                    var valueItem = list.Find(it => it.Code == panel.Name);
+                    if (valueItem == null) continue;
+
+                    panel.Controls[0].UpdateUI(() => panel.Controls[0].Text = valueItem.Name);
+
+                    var color = valueItem.Percentage.StartsWith("-") ? Color.Green : Color.Red;
+
+                    panel.Controls[1].UpdateUI(() =>
                     {
-                        panel.ClientArea.Controls[0].UpdateUI(() => panel.ClientArea.Controls[0].Text = valueItem.Name);
-
-                        var color = valueItem.Percentage.StartsWith("-") ? Color.Green : Color.Pink;
-
-                        panel.ClientArea.Controls[1].UpdateUI(() =>
+                        if (panel.Controls[1] is Label label)
                         {
-                            var label = (panel.ClientArea.Controls[1] as UltraLabel);
-                            label.Appearance.ForeColor = color;
+                            label.ForeColor = color;
                             label.Text = valueItem.Value;
-                        });
+                        }
+                    });
 
-                        panel.ClientArea.Controls[2].UpdateUI(() =>
+                    panel.Controls[2].UpdateUI(() =>
+                    {
+                        if (panel.Controls[1] is Label label)
                         {
-                            var label = (panel.ClientArea.Controls[2] as UltraLabel);
-                            label.Appearance.ForeColor = color;
+                            label.ForeColor = color;
                             label.Text = valueItem.Percentage.TrimStart('-');
-                        });
-                    }
+                        }
+                    });
                 }
             }
         }

@@ -59,15 +59,14 @@ namespace AccelerateBall.Forms
                 {
                     Name = codeList[i],
                     Dock = DockStyle.Top,
-                    Height = 20,
-                    Margin = new Padding(5, 5, 5, 5)
+                    Height = 30,
                 };
 
                 var labelName = new Label
                 {
                     Dock = DockStyle.Left,
                     Font = font,
-                    AutoSize = true,
+                    Width = 65,
                     TextAlign = ContentAlignment.MiddleLeft
                 };
 

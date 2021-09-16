@@ -143,7 +143,6 @@ namespace AccelerateBall.Forms
             this.TopMost = true;
             this.TransparencyKey = System.Drawing.Color.White;
             this.Load += new System.EventHandler(this.FrmMinBall_Load);
-            this.Click += new System.EventHandler(this.FrmMinBall_Click);
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 

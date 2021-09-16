@@ -2,6 +2,8 @@
 using System.Configuration;
 using System.Collections.Generic;
 using System.Linq;
+using AccelerateBall.Model;
+using Newtonsoft.Json;
 
 namespace AccelerateBall.Utils
 {
@@ -11,17 +13,9 @@ namespace AccelerateBall.Utils
     public class AppConfig
     {
         /// <summary>
-        /// 小球初始化X坐标
+        /// config配置信息
         /// </summary>
-        public static List<string> CodeList
-        {
-            get
-            {
-                var codeStr = GetAppsettingValue("codeList") as string;
-                return codeStr.Split(',').ToList();
-            }
-            private set => SetAppsettingValue("codeList", value.ToString());
-        }
+        private static List<Dict> CodeList;
 
         /// <summary>
         /// 小球初始化X坐标
@@ -98,6 +92,32 @@ namespace AccelerateBall.Utils
             if (config.AppSettings.Settings[key] == null || config.AppSettings.Settings[key].Value == null) return defaultValue;
 
             return config.AppSettings.Settings[key].Value;
+        }
+
+        /// <summary>
+        /// 获取配置文件
+        /// </summary>
+        /// <returns></returns>
+        public static List<Dict> GetCodeList()
+        {
+            if (CodeList == null)
+            {
+                // 默认的数据
+                var defaultResult = new List<Dict> { new Dict { Code = "sz000858" }, new Dict { Code = "sh600928" } };
+
+                try
+                {
+                    var str = System.IO.File.ReadAllText("./config.json");
+                    var list = JsonConvert.DeserializeObject<List<Dict>>(str);
+                    CodeList = list;
+                }
+                catch
+                {
+                    NLogHelper.Error("没有获取到配置文件或者配置文件格式不符合要求.");
+                    CodeList = defaultResult;
+                }
+            }
+            return CodeList;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AccelerateBall.Model;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -10,9 +11,10 @@ namespace AccelerateBall.Utils
     {
         private readonly static HttpClient Client = new HttpClient();
 
-        public static async Task<List<Dict>> Get(List<string> codeList)
+        public static async Task<List<Dict>> Get()
         {
-            if (codeList.Count == 0) codeList.Add("sz002044");
+            var dictList = AppConfig.GetCodeList();
+            var codeList = dictList.Select(x => x.Code).ToList();
             var baseUrl = $"http://hq.sinajs.cn/list={string.Join(",", codeList)}";
             var response = await Client.GetAsync(baseUrl);
             response.EnsureSuccessStatusCode();
@@ -23,6 +25,8 @@ namespace AccelerateBall.Utils
             {
                 var tempList = arr[i].Split(new char[] { ',', '=' });
                 var name = tempList[1].Replace("\"", "");
+                var dict = dictList.Find(x => x.Code == codeList[i]);
+                if (!string.IsNullOrEmpty(dict.Name)) name = dict.Name;
                 var now = double.Parse(tempList[4]);
                 var pre = double.Parse(tempList[3]);
                 var percentage = Math.Round(((now - pre) / pre) * 1000).ToString();

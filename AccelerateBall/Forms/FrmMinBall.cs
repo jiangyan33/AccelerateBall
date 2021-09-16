@@ -47,7 +47,6 @@ namespace AccelerateBall.Forms
         public FrmMinBall()
         {
             InitializeComponent();
-
             frmMenu = new FrmMenu
             {
                 TopMost = AppConfig.TopMost,
@@ -136,7 +135,7 @@ namespace AccelerateBall.Forms
 
         private async void Timer_Tick(object sender, EventArgs e)
         {
-            var res = await HttpClientHelper.Get(AppConfig.CodeList);
+            var res = await HttpClientHelper.Get();
             var newRate = res[0].Percentage;
             if (string.IsNullOrEmpty(oldRateDict.Percentage) || newRate != oldRateDict.Percentage || oldRateDict.Id > 2)
             {
@@ -248,12 +247,11 @@ namespace AccelerateBall.Forms
             return new Point(x, y);
         }
 
-        private void FrmMinBall_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             mouse.Stop();
+            Program.Exit();
         }
-
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e) => Program.Exit();
 
         private void HideToolStripMenuItem_Click(object sender, EventArgs e)
         {

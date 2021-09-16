@@ -3,6 +3,7 @@ using AccelerateBall.Utils;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace AccelerateBall.Forms
@@ -51,7 +52,7 @@ namespace AccelerateBall.Forms
         private void LoadPanel()
         {
             var font = new Font(new FontFamily("微软雅黑"), 10, FontStyle.Bold);
-            var codeList = AppConfig.CodeList;
+            var codeList = AppConfig.GetCodeList().Select(x => x.Code).ToList();
             for (var i = 1; i < codeList.Count; i++)
             {
                 var panel = new Panel

@@ -117,7 +117,7 @@ namespace AccelerateBall.Forms
 
                     panel.Controls[2].UpdateUI(() =>
                     {
-                        if (panel.Controls[1] is Label label)
+                        if (panel.Controls[2] is Label label)
                         {
                             label.ForeColor = color;
                             label.Text = valueItem.Percentage.TrimStart('-');

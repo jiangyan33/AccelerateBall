@@ -55,7 +55,9 @@
   <ItemGroup>
     <Reference Include="Infragistics4.Shared.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
     <Reference Include="Infragistics4.Win.Misc.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
+    <Reference Include="Infragistics4.Win.UltraWinGrid.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.v16.2, Version=16.2.20162.2182, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb" />
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -111,6 +113,7 @@
     <Compile Include="Utils\NetWorkAdapter.cs" />
     <Compile Include="Utils\NetWorkSpeedMonitor.cs" />
     <Compile Include="Utils\NLogHelper.cs" />
+    <Compile Include="Utils\UltraGridHelper.cs" />
     <Compile Include="Utils\User32.cs" />
     <Compile Include="Utils\WinFormHelper.cs" />
     <EmbeddedResource Include="CustomControl\BallControl.resx">

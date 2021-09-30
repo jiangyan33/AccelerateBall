@@ -136,10 +136,10 @@ namespace AccelerateBall.Forms
         private async void Timer_Tick(object sender, EventArgs e)
         {
             var res = await HttpClientHelper.Get();
-            var newRate = res[0].Percentage;
-            if (string.IsNullOrEmpty(oldRateDict.Percentage) || newRate != oldRateDict.Percentage || oldRateDict.Id > 2)
+            var newRate = res[0].FormartPercentage;
+            if (string.IsNullOrEmpty(oldRateDict.FormartPercentage) || newRate != oldRateDict.FormartPercentage || oldRateDict.Id > 2)
             {
-                oldRateDict.Percentage = newRate;
+                oldRateDict.FormartPercentage = newRate;
                 oldRateDict.Id++;
                 PaintMiniBallControl(newRate);
             }

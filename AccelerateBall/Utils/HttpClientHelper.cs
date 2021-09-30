@@ -30,9 +30,18 @@ namespace AccelerateBall.Utils
                 var now = double.Parse(tempList[4]);
                 var pre = double.Parse(tempList[3]);
                 var percentage = Math.Round(((now - pre) / pre) * 1000).ToString();
+                if (now > 1000)
+                {
+                    now = Math.Round(now);
+                }
+                else if (now > 100)
+                {
+                    now = Math.Round(now, 1);
+                }
                 result.Add(new Dict(codeList[i], name, now.ToString(), percentage));
             }
-            return result;
+
+            return result.OrderByDescending(x => Convert.ToDecimal(x.FormartPercentage)).ToList();
         }
 
         public static void Close()

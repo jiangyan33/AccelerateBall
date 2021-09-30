@@ -30,13 +30,14 @@ namespace AccelerateBall.Forms
         private void InitializeComponent()
         {
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.panelFill = new Infragistics.Win.Misc.UltraPanel();
             this.panelContent = new Infragistics.Win.Misc.UltraPanel();
             this.panelTop = new Infragistics.Win.Misc.UltraPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxStartOpen = new System.Windows.Forms.PictureBox();
             this.pictureBoxAllCheck = new System.Windows.Forms.PictureBox();
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
+            this.grid = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.panelFill.ClientArea.SuspendLayout();
             this.panelFill.SuspendLayout();
             this.panelContent.ClientArea.SuspendLayout();
@@ -46,6 +47,7 @@ namespace AccelerateBall.Forms
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartOpen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAllCheck)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
             this.SuspendLayout();
             // 
             // panelFill
@@ -70,7 +72,7 @@ namespace AccelerateBall.Forms
             // 
             // panelContent.ClientArea
             // 
-            this.panelContent.ClientArea.Controls.Add(this.flowLayoutPanel);
+            this.panelContent.ClientArea.Controls.Add(this.grid);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(0, 78);
             this.panelContent.Name = "panelContent";
@@ -111,7 +113,7 @@ namespace AccelerateBall.Forms
             this.pictureBoxStartOpen.Location = new System.Drawing.Point(84, 0);
             this.pictureBoxStartOpen.Margin = new System.Windows.Forms.Padding(0);
             this.pictureBoxStartOpen.Name = "pictureBoxStartOpen";
-            this.pictureBoxStartOpen.Size = new System.Drawing.Size(84, 78);
+            this.pictureBoxStartOpen.Size = new System.Drawing.Size(85, 78);
             this.pictureBoxStartOpen.TabIndex = 1;
             this.pictureBoxStartOpen.TabStop = false;
             this.pictureBoxStartOpen.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
@@ -131,14 +133,23 @@ namespace AccelerateBall.Forms
             this.pictureBoxAllCheck.MouseEnter += new System.EventHandler(this.PictureBox_MouseEnter);
             this.pictureBoxAllCheck.MouseLeave += new System.EventHandler(this.PictureBox_MouseLeave);
             // 
-            // flowLayoutPanel
+            // grid
             // 
-            this.flowLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Padding = new System.Windows.Forms.Padding(0, 1, 0, 0);
-            this.flowLayoutPanel.Size = new System.Drawing.Size(169, 160);
-            this.flowLayoutPanel.TabIndex = 0;
+            appearance2.BackColor = System.Drawing.Color.White;
+            appearance2.FontData.Name = "微软雅黑";
+            appearance2.FontData.SizeInPoints = 12F;
+            appearance2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.grid.DisplayLayout.Appearance = appearance2;
+            this.grid.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            this.grid.DisplayLayout.NoDataSourceMessageText = "请直接开门后将耗材放入柜中！确保称重耗材放入正确的存放位置！扫码耗材无需扫码放入！";
+            this.grid.DisplayLayout.Override.NoRowsInDataSourceMessageText = "没有取用记录";
+            this.grid.DisplayLayout.Override.NoVisibleRowsMessageText = "没有匹配到相应的筛选结果";
+            this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grid.Location = new System.Drawing.Point(0, 0);
+            this.grid.Name = "grid";
+            this.grid.Size = new System.Drawing.Size(169, 160);
+            this.grid.TabIndex = 2;
+            this.grid.Text = "ultraGrid1";
             // 
             // FrmMenu
             // 
@@ -161,6 +172,7 @@ namespace AccelerateBall.Forms
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxStartOpen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAllCheck)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,6 +184,6 @@ namespace AccelerateBall.Forms
         private System.Windows.Forms.PictureBox pictureBoxStartOpen;
         private System.Windows.Forms.PictureBox pictureBoxAllCheck;
         private Infragistics.Win.Misc.UltraPanel panelContent;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
+        private Infragistics.Win.UltraWinGrid.UltraGrid grid;
     }
 }

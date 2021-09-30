@@ -2,6 +2,7 @@
 using AccelerateBall.Utils;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,7 +14,7 @@ namespace AccelerateBall.Forms
         public FrmMenu()
         {
             InitializeComponent();
-            LoadPanel();
+            LoadGrid();
         }
         private void FrmMenu_MouseLeave(object sender, EventArgs e) => Hide();
 
@@ -49,79 +50,51 @@ namespace AccelerateBall.Forms
             }
         }
 
-        private void LoadPanel()
+        private void LoadGrid()
         {
-            var font = new Font(new FontFamily("微软雅黑"), 10, FontStyle.Bold);
-            var codeList = AppConfig.GetCodeList().Select(x => x.Code).ToList();
-            for (var i = 1; i < codeList.Count; i++)
+            grid.UpdateUI(() =>
             {
-                var panel = new Panel
+                if (grid.DataSource == null)
                 {
-                    Name = codeList[i],
-                    Dock = DockStyle.Top,
-                    Height = 30,
-                };
+                    var codeList = AppConfig.GetCodeList();
 
-                var labelName = new Label
-                {
-                    Dock = DockStyle.Left,
-                    Font = font,
-                    Width = 65,
-                    TextAlign = ContentAlignment.MiddleLeft
-                };
+                    grid.DataSource = new BindingList<Dict>(codeList);
+                    var items = new List<UltraGridDisplayItem>()
+                    {
+                        new UltraGridDisplayItem{  Key ="Name", Caption="名称", Position=1},
+                        new UltraGridDisplayItem{  Key ="Value", Caption="价格", Position=2},
+                        new UltraGridDisplayItem{  Key ="Percentage", Caption="涨幅", Position=3},
+                    };
+                    UltraGridHelper.InitializeUltraGridDisplay(grid, items, true);
+                    var columns = grid.DisplayLayout.Bands[0].Columns;
 
-                var labelValue = new Label
-                {
-                    Dock = DockStyle.Fill,
-                    Font = font,
-                    TextAlign = ContentAlignment.MiddleRight
-                };
-
-                var labelRate = new Label
-                {
-                    Dock = DockStyle.Right,
-                    Font = font,
-                    Width = 42,
-                    TextAlign = ContentAlignment.MiddleRight
-                };
-
-                panel.Controls.Add(labelName);
-                panel.Controls.Add(labelValue);
-                panel.Controls.Add(labelRate);
-                panelContent.ClientArea.Controls.Add(panel);
-            }
+                    columns["Name"].Width = 76;
+                    columns["Value"].Width = 56;
+                    columns["Percentage"].Width = 40;
+                }
+            });
         }
 
         public void LoadData(List<Dict> list)
         {
-            foreach (var control in panelContent.ClientArea.Controls)
+            foreach (var row in grid.Rows)
             {
-                if (control is Panel panel)
+                var rowItem = row.ListObject as Dict;
+                var newItem = list.First(x => x.Code == rowItem.Code);
+
+                if (rowItem.Name != newItem.Name) rowItem.Name = newItem.Name;
+                rowItem.Value = newItem.Value;
+
+                var color = Color.Red;
+                if (newItem.FormartPercentage.StartsWith("-"))
                 {
-                    var valueItem = list.Find(it => it.Code == panel.Name);
-                    if (valueItem == null) continue;
-
-                    panel.Controls[0].UpdateUI(() => panel.Controls[0].Text = valueItem.Name);
-
-                    var color = valueItem.Percentage.StartsWith("-") ? Color.Green : Color.Red;
-
-                    panel.Controls[1].UpdateUI(() =>
-                    {
-                        if (panel.Controls[1] is Label label)
-                        {
-                            label.ForeColor = color;
-                            label.Text = valueItem.Value;
-                        }
-                    });
-
-                    panel.Controls[2].UpdateUI(() =>
-                    {
-                        if (panel.Controls[2] is Label label)
-                        {
-                            label.ForeColor = color;
-                            label.Text = valueItem.Percentage.TrimStart('-');
-                        }
-                    });
+                    color = Color.Green;
+                }
+                rowItem.FormartPercentage = newItem.FormartPercentage;
+                if (row.Cells[nameof(Dict.Value)].Appearance.ForeColor != color)
+                {
+                    row.Cells[nameof(Dict.FormartPercentage)].Appearance.ForeColor = color;
+                    row.Cells[nameof(Dict.Value)].Appearance.ForeColor = color;
                 }
             }
         }

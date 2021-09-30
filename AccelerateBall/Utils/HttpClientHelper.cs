@@ -40,8 +40,7 @@ namespace AccelerateBall.Utils
                 }
                 result.Add(new Dict(codeList[i], name, now.ToString(), percentage));
             }
-
-            return result.OrderByDescending(x => Convert.ToDecimal(x.FormartPercentage)).ToList();
+            return result;
         }
 
         public static void Close()

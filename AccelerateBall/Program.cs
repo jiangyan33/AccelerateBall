@@ -1,5 +1,6 @@
 ﻿using AccelerateBall.Utils;
 using System;
+using System.Diagnostics;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -21,9 +22,18 @@ namespace AccelerateBall
             Application.ThreadException += new ThreadExceptionEventHandler(Application_ThreadException);
             //处理非线程异常
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
-            NLogHelper.Info("程序启动");
+            Process instance = RunningInstance();
+            if (instance == null)
+            {
+                NLogHelper.Info("程序启动");
+                Application.Run(new Forms.FrmMinBall());
+            }
+            else
+            {
+                NLogHelper.Info("已经存在正在运行的实例");
+                HandleRunningInstance(instance);
+            }
 
-            Application.Run(new Forms.FrmMinBall());
         }
 
         private static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
@@ -44,6 +54,33 @@ namespace AccelerateBall
             HttpClientHelper.Close();
             NetWorkSpeedMonitor.GetInstance().StopMonitoring();
             Application.Exit();
+        }
+
+        /// <summary>
+        /// 获取正在运行的实例，没有运行的实例返回null;
+        /// </summary>
+        /// <returns></returns>
+        public static Process RunningInstance()
+        {
+            Process current = Process.GetCurrentProcess();
+            Process[] processes = Process.GetProcessesByName(current.ProcessName);
+            foreach (Process process in processes)
+            {
+                if (process.Id != current.Id && process.MainModule.FileName == current.MainModule.FileName)
+                {
+                    return process;
+                }
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 显示已运行的程序。
+        /// </summary>
+        public static void HandleRunningInstance(Process instance)
+        {
+            User32.ShowWindowAsync(instance.MainWindowHandle, User32.WS_SHOWMAXIMIZE); //显示，通过后面的值可以对窗口大小进行控制
+            User32.SetForegroundWindow(instance.MainWindowHandle);            //放到前端
         }
     }
 }

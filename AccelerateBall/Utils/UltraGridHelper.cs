@@ -85,9 +85,9 @@ namespace AccelerateBall.Utils
             // 设置滚动条出现的时候不拆分
             grid.DisplayLayout.MaxColScrollRegions = 1;
             grid.DisplayLayout.MaxRowScrollRegions = 1;
-            grid.DisplayLayout.ScrollBarLook.VerticalScrollBarWidth = 50;
-            grid.DisplayLayout.ScrollBarLook.VerticalScrollBarArrowHeight = 70;
-            grid.DisplayLayout.ScrollBarLook.MinimumThumbHeight = 70;
+            //grid.DisplayLayout.ScrollBarLook.VerticalScrollBarWidth = 50;
+            //grid.DisplayLayout.ScrollBarLook.VerticalScrollBarArrowHeight = 70;
+            //grid.DisplayLayout.ScrollBarLook.MinimumThumbHeight = 70;
             grid.DisplayLayout.Appearance.BackColor = Color.White;
             grid.DisplayLayout.BorderStyle = UIElementBorderStyle.None;
             grid.DisplayLayout.ScrollBounds = ScrollBounds.ScrollToFill;

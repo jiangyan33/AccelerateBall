@@ -71,7 +71,7 @@ namespace AccelerateBall.Forms
             this.panelFill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFill.Location = new System.Drawing.Point(0, 0);
             this.panelFill.Name = "panelFill";
-            this.panelFill.Size = new System.Drawing.Size(213, 300);
+            this.panelFill.Size = new System.Drawing.Size(213, 318);
             this.panelFill.TabIndex = 2;
             // 
             // panelContent
@@ -84,7 +84,7 @@ namespace AccelerateBall.Forms
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(0, 78);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(211, 220);
+            this.panelContent.Size = new System.Drawing.Size(211, 238);
             this.panelContent.TabIndex = 3;
             // 
             // grid
@@ -101,7 +101,7 @@ namespace AccelerateBall.Forms
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(0, 29);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(211, 191);
+            this.grid.Size = new System.Drawing.Size(211, 209);
             this.grid.TabIndex = 2;
             this.grid.Text = "ultraGrid1";
             // 
@@ -193,7 +193,7 @@ namespace AccelerateBall.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(213, 300);
+            this.ClientSize = new System.Drawing.Size(213, 318);
             this.Controls.Add(this.panelFill);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmMenu";

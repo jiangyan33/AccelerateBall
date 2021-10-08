@@ -136,10 +136,10 @@ namespace AccelerateBall.Forms
         private async void Timer_Tick(object sender, EventArgs e)
         {
             var res = await HttpClientHelper.Get();
-            var newRate = res[0].FormartPercentage;
-            if (string.IsNullOrEmpty(oldRateDict.FormartPercentage) || newRate != oldRateDict.FormartPercentage || oldRateDict.Id > 2)
+            var newRate = res[0].Percentage;
+            if (newRate != oldRateDict.Percentage || oldRateDict.Id > 2)
             {
-                oldRateDict.FormartPercentage = newRate;
+                oldRateDict.Percentage = newRate;
                 oldRateDict.Id++;
                 PaintMiniBallControl(newRate);
             }
@@ -149,7 +149,7 @@ namespace AccelerateBall.Forms
             }
         }
 
-        public void PaintMiniBallControl(string usedMemoryRate)
+        public void PaintMiniBallControl(int usedMemoryRate)
         {
             var g = ballControl.CreateGraphics();
             g.SmoothingMode = SmoothingMode.AntiAlias;
@@ -158,13 +158,14 @@ namespace AccelerateBall.Forms
             g.FillEllipse(brush, 4, 4, 52, 52);
 
             var color = Color.Black;
-            if (usedMemoryRate.StartsWith("-"))
+
+            if (usedMemoryRate < 0)
             {
-                usedMemoryRate = usedMemoryRate.Replace("-", "");
+                usedMemoryRate = Math.Abs(usedMemoryRate);
                 color = Color.Red;//填充的颜色
             }
 
-            var x = usedMemoryRate.Length > 1 ? 16 : 21;
+            var x = usedMemoryRate > 10 ? 16 : 21;
             brush = new SolidBrush(color);
             g.DrawString(usedMemoryRate + "%", new Font("宋体", 14), brush, x, 21);
             g.Dispose();

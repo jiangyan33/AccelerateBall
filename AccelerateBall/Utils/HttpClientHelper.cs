@@ -27,9 +27,9 @@ namespace AccelerateBall.Utils
                 var name = tempList[1].Replace("\"", "");
                 var dict = dictList.Find(x => x.Code == codeList[i]);
                 if (!string.IsNullOrEmpty(dict.Name)) name = dict.Name;
-                var now = double.Parse(tempList[4]);
-                var pre = double.Parse(tempList[3]);
-                var percentage = Math.Round(((now - pre) / pre) * 1000).ToString();
+                var now = Math.Round(decimal.Parse(tempList[4]), 2);
+                var pre = decimal.Parse(tempList[3]);
+                int percentage = (int)Math.Round(((now - pre) / pre) * 1000);
                 if (now > 1000)
                 {
                     now = Math.Round(now);
@@ -38,7 +38,7 @@ namespace AccelerateBall.Utils
                 {
                     now = Math.Round(now, 1);
                 }
-                result.Add(new Dict(codeList[i], name, now.ToString(), percentage));
+                result.Add(new Dict(codeList[i], name, now, percentage));
             }
             return result;
         }

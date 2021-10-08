@@ -1,8 +1,6 @@
 ﻿using AccelerateBall.Model;
 using AccelerateBall.Utils;
-using Infragistics.Win.UltraWinGrid;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -65,15 +63,15 @@ namespace AccelerateBall.Forms
                     {
                         new UltraGridDisplayItem{  Key ="Name", Caption="名称", Position=1},
                         new UltraGridDisplayItem{  Key ="Value", Caption="价格", Position=2},
-                        new UltraGridDisplayItem{  Key ="FormartPercentage", Caption="涨幅", Position=3},
+                        new UltraGridDisplayItem{  Key ="Percentage", Caption="涨幅", Position=3},
                     };
                     UltraGridHelper.InitializeUltraGridDisplay(grid, items, true);
                     var columns = grid.DisplayLayout.Bands[0].Columns;
 
                     columns["Name"].Width = 76;
                     columns["Value"].Width = 56;
-                    columns["FormartPercentage"].Width = 40;
-                    columns["FormartPercentage"].SortComparer = new Compare();
+                    columns["Percentage"].Width = 40;
+                    columns["Percentage"].FormatInfo = new FormartInfo();
                 }
             });
         }
@@ -87,28 +85,20 @@ namespace AccelerateBall.Forms
 
                 if (rowItem.Name != newItem.Name) rowItem.Name = newItem.Name;
                 rowItem.Value = newItem.Value;
-                rowItem.FormartPercentage = newItem.FormartPercentage;
+                rowItem.Percentage = newItem.Percentage;
 
-                var color = newItem.FormartPercentage.StartsWith("-") ? Color.Green : Color.Red;
+                var color = newItem.Percentage < 0 ? Color.Green : Color.Red;
                 if (row.Cells[nameof(Dict.Value)].Appearance.ForeColor != color)
                 {
-                    row.Cells[nameof(Dict.FormartPercentage)].Appearance.ForeColor = color;
+                    row.Cells[nameof(Dict.Percentage)].Appearance.ForeColor = color;
                     row.Cells[nameof(Dict.Value)].Appearance.ForeColor = color;
                 }
             }
         }
 
-        private class Compare : IComparer
+        private class FormartInfo : IFormatProvider
         {
-            int IComparer.Compare(object x, object y)
-            {
-                var newX = x as UltraGridCell;
-                var newRowX = newX.Row.ListObject as Dict;
-
-                var newY = y as UltraGridCell;
-                var newRowY = newY.Row.ListObject as Dict;
-                return decimal.Compare(newRowX.Percentage, newRowY.Percentage);
-            }
+            public object GetFormat(Type formatType) => "{0:0;0;0}";
         }
     }
 }

@@ -8,23 +8,21 @@
 
         public string Name { get; set; }
 
-        public string Value { get; set; }
+        public decimal Value { get; set; }
 
-        public string FormartPercentage { get; set; }
+        public int Percentage { get; set; }
 
-        public decimal Percentage { get; set; }
 
         public Dict()
         {
         }
 
-        public Dict(string code, string name, string value, string percentage)
+        public Dict(string code, string name, decimal value, int percentage)
         {
             Code = code;
             Name = name;
             Value = value;
-            FormartPercentage = percentage;
-            Percentage = decimal.Parse(percentage);
+            Percentage = percentage;
         }
     }
 }

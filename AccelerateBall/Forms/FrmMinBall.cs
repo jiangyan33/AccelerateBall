@@ -52,10 +52,20 @@ namespace AccelerateBall.Forms
                 TopMost = AppConfig.TopMost,
                 Opacity = AppConfig.Opacity
             };
+            frmMenu.CheckedChanged += FrmMenu_CheckedChanged;
             TopMost = AppConfig.TopMost;
             Opacity = AppConfig.Opacity;
             mouse.OnMouseClickEvent += Mouse_OnMouseClickEvent;
             mouse.Start();
+        }
+
+        private void FrmMenu_CheckedChanged(object sender, EventArgs e)
+        {
+            if (sender is Infragistics.Win.UltraWinEditors.UltraCheckEditor check)
+            {
+                AppConfig.TopMost = check.Checked;
+                this.UpdateUI(() => TopMost = check.Checked);
+            }
         }
 
         private void Mouse_OnMouseClickEvent(object sender, MouseEventArgs e)

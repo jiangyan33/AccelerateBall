@@ -17,6 +17,9 @@ namespace AccelerateBall.Forms
             checkTop.Checked = AppConfig.TopMost;
             LoadGrid();
         }
+
+        public event EventHandler CheckedChanged;
+
         private void FrmMenu_MouseLeave(object sender, EventArgs e) => Hide();
 
         private void PictureBox_MouseEnter(object sender, EventArgs e)
@@ -87,7 +90,6 @@ namespace AccelerateBall.Forms
                 if (rowItem.Name != newItem.Name) rowItem.Name = newItem.Name;
                 rowItem.Value = newItem.Value;
                 rowItem.Percentage = newItem.Percentage;
-
                 var color = newItem.Percentage < 0 ? Color.Green : Color.Red;
                 if (row.Cells[nameof(Dict.Value)].Appearance.ForeColor != color)
                 {
@@ -97,11 +99,11 @@ namespace AccelerateBall.Forms
             }
         }
 
+        private void checkTop_CheckedChanged(object sender, EventArgs e) => CheckedChanged?.Invoke(sender, e);
+
         private class FormartInfo : IFormatProvider
         {
             public object GetFormat(Type formatType) => "{0:0;0;0}";
         }
-
-        private void checkTop_CheckedChanged(object sender, EventArgs e) => AppConfig.TopMost = checkTop.Checked;
     }
 }

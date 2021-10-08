@@ -14,6 +14,7 @@ namespace AccelerateBall.Forms
         public FrmMenu()
         {
             InitializeComponent();
+            checkTop.Checked = AppConfig.TopMost;
             LoadGrid();
         }
         private void FrmMenu_MouseLeave(object sender, EventArgs e) => Hide();
@@ -100,5 +101,7 @@ namespace AccelerateBall.Forms
         {
             public object GetFormat(Type formatType) => "{0:0;0;0}";
         }
+
+        private void checkTop_CheckedChanged(object sender, EventArgs e) => AppConfig.TopMost = checkTop.Checked;
     }
 }

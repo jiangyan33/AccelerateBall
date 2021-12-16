@@ -133,12 +133,13 @@ namespace AccelerateBall.Forms
             this.uiSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.uiSwitch.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSwitch.InActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.uiSwitch.InActiveText = "";
             this.uiSwitch.IsScaled = false;
-            this.uiSwitch.Location = new System.Drawing.Point(101, 14);
+            this.uiSwitch.Location = new System.Drawing.Point(106, 14);
             this.uiSwitch.MinimumSize = new System.Drawing.Size(1, 1);
             this.uiSwitch.Name = "uiSwitch";
-            this.uiSwitch.Size = new System.Drawing.Size(58, 27);
+            this.uiSwitch.Size = new System.Drawing.Size(53, 27);
             this.uiSwitch.Style = Sunny.UI.UIStyle.Custom;
             this.uiSwitch.TabIndex = 1;
             this.uiSwitch.ValueChanged += new Sunny.UI.UISwitch.OnValueChanged(this.uiSwitch_ValueChanged);

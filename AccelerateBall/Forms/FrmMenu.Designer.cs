@@ -31,6 +31,7 @@ namespace AccelerateBall.Forms
         {
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("", -1);
             this.panelFill = new Infragistics.Win.Misc.UltraPanel();
             this.panelContent = new Infragistics.Win.Misc.UltraPanel();
             this.grid = new Infragistics.Win.UltraWinGrid.UltraGrid();
@@ -68,7 +69,7 @@ namespace AccelerateBall.Forms
             this.panelFill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelFill.Location = new System.Drawing.Point(0, 0);
             this.panelFill.Name = "panelFill";
-            this.panelFill.Size = new System.Drawing.Size(172, 349);
+            this.panelFill.Size = new System.Drawing.Size(172, 296);
             this.panelFill.TabIndex = 2;
             // 
             // panelContent
@@ -81,7 +82,7 @@ namespace AccelerateBall.Forms
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(0, 78);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(170, 269);
+            this.panelContent.Size = new System.Drawing.Size(170, 216);
             this.panelContent.TabIndex = 3;
             // 
             // grid
@@ -91,6 +92,8 @@ namespace AccelerateBall.Forms
             appearance2.FontData.SizeInPoints = 12F;
             appearance2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.grid.DisplayLayout.Appearance = appearance2;
+            ultraGridBand1.ColHeadersVisible = false;
+            this.grid.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grid.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.grid.DisplayLayout.NoDataSourceMessageText = "请直接开门后将耗材放入柜中！确保称重耗材放入正确的存放位置！扫码耗材无需扫码放入！";
             this.grid.DisplayLayout.Override.NoRowsInDataSourceMessageText = "没有取用记录";
@@ -98,7 +101,7 @@ namespace AccelerateBall.Forms
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grid.Location = new System.Drawing.Point(0, 54);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(170, 215);
+            this.grid.Size = new System.Drawing.Size(170, 162);
             this.grid.TabIndex = 2;
             this.grid.Text = "ultraGrid1";
             // 
@@ -215,7 +218,7 @@ namespace AccelerateBall.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(172, 349);
+            this.ClientSize = new System.Drawing.Size(172, 296);
             this.Controls.Add(this.panelFill);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FrmMenu";

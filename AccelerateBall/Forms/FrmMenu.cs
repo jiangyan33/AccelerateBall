@@ -14,7 +14,7 @@ namespace AccelerateBall.Forms
         public FrmMenu()
         {
             InitializeComponent();
-            checkTop.Checked = AppConfig.TopMost;
+            uiSwitch.Active = AppConfig.TopMost;
             LoadGrid();
         }
 
@@ -99,11 +99,12 @@ namespace AccelerateBall.Forms
             }
         }
 
-        private void checkTop_CheckedChanged(object sender, EventArgs e) => CheckedChanged?.Invoke(sender, e);
-
         private class FormartInfo : IFormatProvider
         {
             public object GetFormat(Type formatType) => "{0:0;0;0}";
         }
+
+        private void uiSwitch_ValueChanged(object sender, bool value) => CheckedChanged?.Invoke(value, null);
+
     }
 }

@@ -61,10 +61,10 @@ namespace AccelerateBall.Forms
 
         private void FrmMenu_CheckedChanged(object sender, EventArgs e)
         {
-            if (sender is Infragistics.Win.UltraWinEditors.UltraCheckEditor check)
+            if (sender is bool flag)
             {
-                AppConfig.TopMost = check.Checked;
-                this.UpdateUI(() => TopMost = check.Checked);
+                AppConfig.TopMost = flag;
+                this.UpdateUI(() => TopMost = flag);
             }
         }
 

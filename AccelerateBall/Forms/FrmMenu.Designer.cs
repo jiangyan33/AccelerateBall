@@ -31,13 +31,12 @@ namespace AccelerateBall.Forms
         {
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             this.panelFill = new Infragistics.Win.Misc.UltraPanel();
             this.panelContent = new Infragistics.Win.Misc.UltraPanel();
             this.grid = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.panelContentTop = new Infragistics.Win.Misc.UltraPanel();
-            this.checkTop = new Infragistics.Win.UltraWinEditors.UltraCheckEditor();
+            this.panelFillTop = new Sunny.UI.UIPanel();
+            this.uiSwitch = new Sunny.UI.UISwitch();
+            this.uiLabel1 = new Sunny.UI.UILabel();
             this.panelTop = new Infragistics.Win.Misc.UltraPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBoxStartOpen = new System.Windows.Forms.PictureBox();
@@ -47,9 +46,7 @@ namespace AccelerateBall.Forms
             this.panelContent.ClientArea.SuspendLayout();
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
-            this.panelContentTop.ClientArea.SuspendLayout();
-            this.panelContentTop.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkTop)).BeginInit();
+            this.panelFillTop.SuspendLayout();
             this.panelTop.ClientArea.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -80,7 +77,7 @@ namespace AccelerateBall.Forms
             // panelContent.ClientArea
             // 
             this.panelContent.ClientArea.Controls.Add(this.grid);
-            this.panelContent.ClientArea.Controls.Add(this.panelContentTop);
+            this.panelContent.ClientArea.Controls.Add(this.panelFillTop);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(0, 78);
             this.panelContent.Name = "panelContent";
@@ -99,41 +96,61 @@ namespace AccelerateBall.Forms
             this.grid.DisplayLayout.Override.NoRowsInDataSourceMessageText = "没有取用记录";
             this.grid.DisplayLayout.Override.NoVisibleRowsMessageText = "没有匹配到相应的筛选结果";
             this.grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grid.Location = new System.Drawing.Point(0, 29);
+            this.grid.Location = new System.Drawing.Point(0, 54);
             this.grid.Name = "grid";
-            this.grid.Size = new System.Drawing.Size(211, 209);
+            this.grid.Size = new System.Drawing.Size(211, 184);
             this.grid.TabIndex = 2;
             this.grid.Text = "ultraGrid1";
             // 
-            // panelContentTop
+            // panelFillTop
             // 
+            this.panelFillTop.Controls.Add(this.uiSwitch);
+            this.panelFillTop.Controls.Add(this.uiLabel1);
+            this.panelFillTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelFillTop.FillColor = System.Drawing.Color.White;
+            this.panelFillTop.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.panelFillTop.IsScaled = false;
+            this.panelFillTop.Location = new System.Drawing.Point(0, 0);
+            this.panelFillTop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelFillTop.MinimumSize = new System.Drawing.Size(1, 1);
+            this.panelFillTop.Name = "panelFillTop";
+            this.panelFillTop.RectColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.panelFillTop.Size = new System.Drawing.Size(211, 54);
+            this.panelFillTop.Style = Sunny.UI.UIStyle.Custom;
+            this.panelFillTop.TabIndex = 3;
+            this.panelFillTop.Text = null;
+            this.panelFillTop.TextAlignment = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelContentTop.ClientArea
+            // uiSwitch
             // 
-            this.panelContentTop.ClientArea.Controls.Add(this.checkTop);
-            this.panelContentTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelContentTop.Location = new System.Drawing.Point(0, 0);
-            this.panelContentTop.Name = "panelContentTop";
-            this.panelContentTop.Size = new System.Drawing.Size(211, 29);
-            this.panelContentTop.TabIndex = 3;
-            // 
-            // checkTop
-            // 
-            this.checkTop.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.uiSwitch.Active = true;
+            this.uiSwitch.ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(202)))), ((int)(((byte)(115)))));
+            this.uiSwitch.ActiveText = "";
+            this.uiSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            appearance3.FontData.Name = "微软雅黑";
-            appearance3.FontData.SizeInPoints = 13F;
-            this.checkTop.Appearance = appearance3;
-            appearance4.FontData.Name = "微软雅黑";
-            appearance4.FontData.SizeInPoints = 13F;
-            this.checkTop.CheckedAppearance = appearance4;
-            this.checkTop.Location = new System.Drawing.Point(11, 0);
-            this.checkTop.Name = "checkTop";
-            this.checkTop.Size = new System.Drawing.Size(201, 29);
-            this.checkTop.TabIndex = 0;
-            this.checkTop.Text = "是否置顶显示";
-            this.checkTop.CheckedChanged += new System.EventHandler(this.checkTop_CheckedChanged);
+            this.uiSwitch.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiSwitch.InActiveText = "";
+            this.uiSwitch.IsScaled = false;
+            this.uiSwitch.Location = new System.Drawing.Point(123, 14);
+            this.uiSwitch.MinimumSize = new System.Drawing.Size(1, 1);
+            this.uiSwitch.Name = "uiSwitch";
+            this.uiSwitch.Size = new System.Drawing.Size(61, 27);
+            this.uiSwitch.Style = Sunny.UI.UIStyle.Custom;
+            this.uiSwitch.TabIndex = 1;
+            this.uiSwitch.ValueChanged += new Sunny.UI.UISwitch.OnValueChanged(this.uiSwitch_ValueChanged);
+            // 
+            // uiLabel1
+            // 
+            this.uiLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.uiLabel1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiLabel1.Location = new System.Drawing.Point(13, 9);
+            this.uiLabel1.Name = "uiLabel1";
+            this.uiLabel1.Size = new System.Drawing.Size(96, 35);
+            this.uiLabel1.Style = Sunny.UI.UIStyle.Custom;
+            this.uiLabel1.TabIndex = 0;
+            this.uiLabel1.Text = "加速球置顶";
+            this.uiLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panelTop
             // 
@@ -206,9 +223,7 @@ namespace AccelerateBall.Forms
             this.panelContent.ClientArea.ResumeLayout(false);
             this.panelContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grid)).EndInit();
-            this.panelContentTop.ClientArea.ResumeLayout(false);
-            this.panelContentTop.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.checkTop)).EndInit();
+            this.panelFillTop.ResumeLayout(false);
             this.panelTop.ClientArea.ResumeLayout(false);
             this.panelTop.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -226,7 +241,8 @@ namespace AccelerateBall.Forms
         private System.Windows.Forms.PictureBox pictureBoxAllCheck;
         private Infragistics.Win.Misc.UltraPanel panelContent;
         private Infragistics.Win.UltraWinGrid.UltraGrid grid;
-        private Infragistics.Win.Misc.UltraPanel panelContentTop;
-        private Infragistics.Win.UltraWinEditors.UltraCheckEditor checkTop;
+        private Sunny.UI.UIPanel panelFillTop;
+        private Sunny.UI.UILabel uiLabel1;
+        private Sunny.UI.UISwitch uiSwitch;
     }
 }

@@ -32,8 +32,8 @@ namespace AccelerateBall.Forms
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMinBall));
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.labelUp = new Infragistics.Win.Misc.UltraLabel();
@@ -44,6 +44,7 @@ namespace AccelerateBall.Forms
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ballControl = new AccelerateBall.CustomControl.BallControl();
+            this.timerShowHide = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,10 +55,10 @@ namespace AccelerateBall.Forms
             // 
             // labelUp
             // 
-            appearance1.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance1.TextHAlignAsString = "Left";
-            appearance1.TextVAlignAsString = "Middle";
-            this.labelUp.Appearance = appearance1;
+            appearance7.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance7.TextHAlignAsString = "Left";
+            appearance7.TextVAlignAsString = "Middle";
+            this.labelUp.Appearance = appearance7;
             this.labelUp.Location = new System.Drawing.Point(58, 3);
             this.labelUp.Name = "labelUp";
             this.labelUp.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -67,10 +68,10 @@ namespace AccelerateBall.Forms
             // 
             // labelDown
             // 
-            appearance2.BackColor = System.Drawing.Color.WhiteSmoke;
-            appearance2.TextHAlignAsString = "Left";
-            appearance2.TextVAlignAsString = "Middle";
-            this.labelDown.Appearance = appearance2;
+            appearance8.BackColor = System.Drawing.Color.WhiteSmoke;
+            appearance8.TextHAlignAsString = "Left";
+            appearance8.TextVAlignAsString = "Middle";
+            this.labelDown.Appearance = appearance8;
             this.labelDown.Location = new System.Drawing.Point(58, 30);
             this.labelDown.Name = "labelDown";
             this.labelDown.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -126,12 +127,16 @@ namespace AccelerateBall.Forms
             this.ballControl.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseMove);
             this.ballControl.MouseUp += new System.Windows.Forms.MouseEventHandler(this.BallControl_MouseUp);
             // 
+            // timerShowHide
+            // 
+            this.timerShowHide.Tick += new System.EventHandler(this.timerShowHide_Tick);
+            // 
             // FrmMinBall
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(133, 61);
+            this.ClientSize = new System.Drawing.Size(166, 76);
             this.Controls.Add(this.labelDown);
             this.Controls.Add(this.labelUp);
             this.Controls.Add(this.ballControl);
@@ -159,5 +164,6 @@ namespace AccelerateBall.Forms
         private System.Windows.Forms.ToolStripMenuItem HideToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+        private System.Windows.Forms.Timer timerShowHide;
     }
 }

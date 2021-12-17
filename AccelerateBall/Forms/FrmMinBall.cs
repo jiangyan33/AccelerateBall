@@ -12,6 +12,8 @@ namespace AccelerateBall.Forms
     public partial class FrmMinBall : Form
     {
 
+        private int formHeight;
+
         /// <summary>
         /// 上一次的圆球占比
         /// </summary>
@@ -85,14 +87,18 @@ namespace AccelerateBall.Forms
         private void FrmMinBall_Load(object sender, EventArgs e)
         {
             timer.Start();
-            var instance = NetWorkSpeedMonitor.GetInstance();
-            if (instance.Adapters.Count == 0)
+            if (AppConfig.AutoHide) timerShowHide.Start();
+            if (AppConfig.MonitorNetWork)
             {
-                NLogHelper.Error("没有检测到网卡信息");
-                return;
+                var instance = NetWorkSpeedMonitor.GetInstance();
+                if (instance.Adapters.Count == 0)
+                {
+                    NLogHelper.Error("没有检测到网卡信息");
+                    return;
+                }
+                instance.StartMonitoring();
+                Task.Run(() => NetWorkMonitor(instance));
             }
-            instance.StartMonitoring();
-            Task.Run(() => NetWorkMonitor(instance));
         }
 
         /// <summary>
@@ -277,6 +283,13 @@ namespace AccelerateBall.Forms
                     item.Text = "隐藏";
                     Show();
                 }
+        }
+
+
+
+        private void timerShowHide_Tick(object sender, EventArgs e)
+        {
+            WinFormHelper.FormHideOrShow(this, ref formHeight);
         }
     }
 }

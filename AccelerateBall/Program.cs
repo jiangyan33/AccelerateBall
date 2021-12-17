@@ -1,4 +1,5 @@
-﻿using AccelerateBall.Utils;
+﻿using AccelerateBall.Forms;
+using AccelerateBall.Utils;
 using System;
 using System.Diagnostics;
 using System.Threading;
@@ -26,7 +27,7 @@ namespace AccelerateBall
             if (instance == null)
             {
                 NLogHelper.Info("程序启动");
-                Application.Run(new Forms.FrmMinBall());
+                Application.Run(new FrmMinBall());
             }
             else
             {

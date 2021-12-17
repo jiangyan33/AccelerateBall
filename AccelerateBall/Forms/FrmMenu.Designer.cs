@@ -40,8 +40,8 @@ namespace AccelerateBall.Forms
             this.uiLabel1 = new Sunny.UI.UILabel();
             this.panelTop = new Infragistics.Win.Misc.UltraPanel();
             this.uiTableLayoutPanel1 = new Sunny.UI.UITableLayoutPanel();
-            this.uiImageButton1 = new Sunny.UI.UIImageButton();
             this.uiImageButton2 = new Sunny.UI.UIImageButton();
+            this.uiImageButton1 = new Sunny.UI.UIImageButton();
             this.panelFill.ClientArea.SuspendLayout();
             this.panelFill.SuspendLayout();
             this.panelContent.ClientArea.SuspendLayout();
@@ -51,8 +51,8 @@ namespace AccelerateBall.Forms
             this.panelTop.ClientArea.SuspendLayout();
             this.panelTop.SuspendLayout();
             this.uiTableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uiImageButton1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiImageButton2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiImageButton1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelFill
@@ -127,7 +127,6 @@ namespace AccelerateBall.Forms
             // 
             // uiSwitch
             // 
-            this.uiSwitch.Active = true;
             this.uiSwitch.ActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(202)))), ((int)(((byte)(115)))));
             this.uiSwitch.ActiveText = "";
             this.uiSwitch.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -185,21 +184,6 @@ namespace AccelerateBall.Forms
             this.uiTableLayoutPanel1.TabIndex = 0;
             this.uiTableLayoutPanel1.TagString = null;
             // 
-            // uiImageButton1
-            // 
-            this.uiImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uiImageButton1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.uiImageButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.uiImageButton1.Image = global::AccelerateBall.Properties.Resources.开机加速;
-            this.uiImageButton1.ImageHover = global::AccelerateBall.Properties.Resources.开机加速选中;
-            this.uiImageButton1.ImagePress = global::AccelerateBall.Properties.Resources.开机加速选中;
-            this.uiImageButton1.ImageSelected = global::AccelerateBall.Properties.Resources.开机加速选中;
-            this.uiImageButton1.Location = new System.Drawing.Point(3, 3);
-            this.uiImageButton1.Name = "uiImageButton1";
-            this.uiImageButton1.Size = new System.Drawing.Size(79, 72);
-            this.uiImageButton1.TabIndex = 0;
-            this.uiImageButton1.TabStop = false;
-            // 
             // uiImageButton2
             // 
             this.uiImageButton2.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -214,6 +198,23 @@ namespace AccelerateBall.Forms
             this.uiImageButton2.Size = new System.Drawing.Size(79, 72);
             this.uiImageButton2.TabIndex = 1;
             this.uiImageButton2.TabStop = false;
+            this.uiImageButton2.Text = null;
+            // 
+            // uiImageButton1
+            // 
+            this.uiImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uiImageButton1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.uiImageButton1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.uiImageButton1.Image = global::AccelerateBall.Properties.Resources.开机加速;
+            this.uiImageButton1.ImageHover = global::AccelerateBall.Properties.Resources.开机加速选中;
+            this.uiImageButton1.ImagePress = global::AccelerateBall.Properties.Resources.开机加速选中;
+            this.uiImageButton1.ImageSelected = global::AccelerateBall.Properties.Resources.开机加速选中;
+            this.uiImageButton1.Location = new System.Drawing.Point(3, 3);
+            this.uiImageButton1.Name = "uiImageButton1";
+            this.uiImageButton1.Size = new System.Drawing.Size(79, 72);
+            this.uiImageButton1.TabIndex = 0;
+            this.uiImageButton1.TabStop = false;
+            this.uiImageButton1.Text = null;
             // 
             // FrmMenu
             // 
@@ -236,8 +237,8 @@ namespace AccelerateBall.Forms
             this.panelTop.ClientArea.ResumeLayout(false);
             this.panelTop.ResumeLayout(false);
             this.uiTableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.uiImageButton1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiImageButton2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiImageButton1)).EndInit();
             this.ResumeLayout(false);
 
         }

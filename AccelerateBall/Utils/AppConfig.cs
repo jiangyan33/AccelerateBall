@@ -45,6 +45,24 @@ namespace AccelerateBall.Utils
         }
 
         /// <summary>
+        /// 是否靠右隐藏
+        /// </summary>
+        public static bool AutoHide
+        {
+            get => GetAppsettingValue("autoHide", true);
+            set => SetAppsettingValue("autoHide", value.ToString());
+        }
+
+        /// <summary>
+        /// 是否监控网络信息
+        /// </summary>
+        public static bool MonitorNetWork
+        {
+            get => GetAppsettingValue("monitorNetWork", true);
+            set => SetAppsettingValue("monitorNetWork", value.ToString());
+        }
+
+        /// <summary>
         /// 是否置于顶层
         /// </summary>
         public static bool TopMost

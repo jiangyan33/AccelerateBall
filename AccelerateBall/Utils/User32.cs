@@ -23,5 +23,7 @@ namespace AccelerateBall.Utils
         /// <returns>如果窗口设入了前台，返回值为非零；如果窗口未被设入前台，返回值为零。</returns>
         [DllImport("User32.dll")]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
+
+
     }
 }

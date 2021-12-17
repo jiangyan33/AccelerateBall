@@ -59,7 +59,7 @@ namespace AccelerateBall.Utils
         public static void FormHideOrShow(Form form, ref int formHeight)
         {
             // 控件的位置
-            int top = 0, left = 0, height = form.Height;
+            int top = form.Top, left = form.Left, height = form.Height;
             bool changeLocation = true;
             if (form.WindowState == FormWindowState.Minimized || !form.Visible) return;
             // (鼠标的X坐标>窗体左上角X坐标-1)&&(鼠标的X坐标<窗体右上角X坐标)&&（鼠标的Y坐标>窗体右上角Y坐标-1）&&(鼠标的Y坐标<窗体右下角Y坐标)
@@ -89,8 +89,8 @@ namespace AccelerateBall.Utils
                     {
                         height = formHeight;
                         formHeight = 0;
-                        changeLocation = false;
                     }
+                    changeLocation = false;
                 }
             }
             else

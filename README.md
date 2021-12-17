@@ -1,7 +1,8 @@
 # AccelerateBall
 winform加速球项目
 
-使用winform实现一个简单的加速球功能，功能菜单的显示隐藏，拖拽，移动等等。 
+使用winform实现一个简单的加速球功能，功能菜单的显示隐藏，拖拽，移动等等。   
+基本功能都已经实现了，停止更新。
 [项目参考](http://blog.csdn.net/yuanwofei/article/details/16339825)  
 
 已经实现加速球的基本功能  
